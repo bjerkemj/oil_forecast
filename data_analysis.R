@@ -111,7 +111,7 @@ arima_model <- auto.arima(ts_data)
 summary(arima_model)
 
 # Make forecasts
-forecast_result <- forecast(arima_model, h = 5)  # Forecasting 5 months ahead
+forecast_result <- forecast(arima_model, h = 17)  # Forecasting 5 months ahead
 
 # Plot the forecast
 plot(forecast_result)
@@ -147,7 +147,7 @@ for (area in area_list) {
   arima_model <- auto.arima(ts_data)
   
   # Make forecasts
-  forecast_result <- forecast(arima_model, h = 5)
+  forecast_result <- forecast(arima_model, h = 17)
   
   # Access the forecasted values
   forecast_values <- forecast_result$mean
@@ -160,12 +160,12 @@ for (area in area_list) {
   forecast_dates <- seq(
     as.Date(paste(year, starting_month, "01", sep = "-")),
     by = "1 month",
-    length.out = 5
+    length.out = 17
   )
 
   # Create a data frame for the current area's forecasts
   area_forecast_df <- data.frame(
-    field = rep(area, 5),
+    field = rep(area, 17),
     date = forecast_dates,
     production = forecast_values
   )
